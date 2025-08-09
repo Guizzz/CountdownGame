@@ -26,7 +26,7 @@ export default function Result({ words, display }: {words:Array<{len:number, wor
         <div >
             {
                 words.map((value, index) => ( 
-                    <div key={index} className=" bg-light-gray dark:bg-dark-gray m-4 p-5 border-1 rounded-sm"> 
+                    <div key={index} className=" bg-light-gray dark:bg-dark-gray m-4 p-5 rounded-sm"> 
                         <span className=" font-bold text-2xl"> {value.len} </span> <span className=" italic"> letters </span> 
                         <ResultRow words_list={value.words}/>
                     </div> 

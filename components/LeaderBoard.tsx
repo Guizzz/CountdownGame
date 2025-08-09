@@ -58,7 +58,7 @@ export default function LeaderBoard(){
         <div>
             <div className=" absolute top-1/3 left-0 w-1/4 bg-light-gray dark:bg-dark-gray rounded-r-md ">
                 <div className=" flex flex-col items-center justify-center m-4">
-                    <div className=" font-bold text-2xl">
+                    <div className="text-2xl">
                         Leader Board
                     </div>
                     <div className=" mx-auto mb-5 w-2/3 h-[1px] bg-light-black dark:bg-light-white"/>
