@@ -1,5 +1,6 @@
 import Letter from "./Letter";
 
+
 export default function Board({ letters } : { letters : Array<String> }) {
 
   return (

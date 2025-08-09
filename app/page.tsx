@@ -1,10 +1,10 @@
 "use client"
 import { useEffect, useState } from "react";
-import Board from "../components/Board";
+import Board from "../components/ui/Board";
 import Result from "../components/Result";
-import Button from "../components/Button";
+import Button from "../components/ui/Button";
 import Cowntdown from "../components/Cowntdown";
-import Settings from "../components/Settings";
+import Settings from "../components/ui/Settings";
 import { checkWords, getLetters } from "../server/server";
 
 export default function Home() {

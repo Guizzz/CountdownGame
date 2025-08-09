@@ -2,7 +2,7 @@
 // https://dictionary.cambridge.org/dictionary/english/
 function ResultRow({words_list}: {words_list: Array<String>})
 {   
-    const openInNewTab = (word:String) => {
+    function openInNewTab(word:String) {
         const newWindow = window.open( "https://dictionary.cambridge.org/dictionary/english/" + word , '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
     }
