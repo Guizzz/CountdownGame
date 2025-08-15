@@ -23,7 +23,7 @@ export default function Result({ words, display }: {words:Array<{len:number, wor
         return;
 
     return (
-        <div >
+        <div className=" w-full min-md:w-3/4 min-lg:w-1/">
             {
                 words.map((value, index) => ( 
                     <div key={index} className=" bg-light-gray dark:bg-dark-gray m-4 p-5 rounded-sm"> 
