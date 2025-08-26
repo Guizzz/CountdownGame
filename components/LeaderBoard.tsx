@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react"
 import Button from "./ui/Button";
+import SecondaryButton from "./ui/SecondaryButton";
 
 function Player ({player}: {player:{name:string, points: number}})
 {
@@ -14,10 +15,10 @@ function Player ({player}: {player:{name:string, points: number}})
                 {player.name} : {points}
             </div>
             <div className=" flex flex-row">
-                <div onClick={()=> setPoints(points + 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-gray-300 hover:text-black ease-in-out duration-300">
+                <div onClick={()=> setPoints(points + 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-green-200 hover:text-black ease-in-out duration-300">
                     <button className=" font-bold mx-2 text-xl"> + </button>
                 </div>
-                <div onClick={()=> setPoints(points - 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-gray-300 hover:text-black ease-in-out duration-300">
+                <div onClick={()=> setPoints(points - 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-red-200 hover:text-black ease-in-out duration-300">
                     <button className=" font-bold mx-2 text-xl"> - </button>
                 </div>
             </div>
@@ -69,7 +70,7 @@ export default function LeaderBoard(){
     return (
         <div>
             <div className=" absolute m-8 right-0 top-0">
-                <Button active={true} f={open}> Leaderboard </Button>
+                <SecondaryButton active={true} f={open}> Leaderboard 🏆 </SecondaryButton>
             </div>
             <AnimatePresence initial={false}>
                 {isVisible ? (
@@ -89,9 +90,9 @@ export default function LeaderBoard(){
                                 <div>
                                     <form onSubmit={submit}>
                                         <input type="text" name="name" placeholder="Player" className=" bg-gray-500 p-2 rounded-sm"/>
-                                        <Button active={true} f={()=>{}}>
+                                        <SecondaryButton active={true} f={()=>{}}>
                                             <input type="submit" value="Add Player"/>
-                                        </Button>
+                                        </SecondaryButton>
                                     </form>
                                 </div>
                                 <Button active={true} f={close}> Close</Button>

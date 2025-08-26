@@ -1,5 +1,6 @@
 /* components/CountDown.jsx */
 
+import { motion } from "motion/react";
 import React, { useState, useEffect } from "react";
 
 export default function CountdownTimer ( {start, timer, callback} : {start: Boolean, timer: number, callback: Function} ) {
@@ -33,13 +34,34 @@ export default function CountdownTimer ( {start, timer, callback} : {start: Bool
 
     if( timeRemaining == 0)
         return (
-            <div className=" text-3xl text-red-400 m-4"> TIME IS UP! </div>
+        <motion.div
+                initial={{ rotate:30, opacity: 0, scale:1.3}}
+                animate={{ rotate:0, opacity:1, scale:1}}
+                transition= {{
+                                type: "spring",
+                                bounce: 0.8,
+                                duration: 1,
+                            }}
+            >
+                <div className=" text-3xl text-red-400 m-4"> TIME IS UP! </div>
+            </motion.div>
         );
 
     return (
-      <div className=" text-3xl m-4">
-        { secToTime(timeRemaining)}
-      </div>
+        <motion.div
+            initial={{ scale:0.7, opacity: 0 }}
+            animate={{ scale:1, opacity:1 }}
+            key={timer}
+            transition= {{
+                            type: "spring",
+                            bounce: 0.3,
+                            duration: 0.5,
+                        }}
+        >
+            <div className=" text-3xl m-4">
+                { secToTime(timeRemaining)}
+            </div>
+        </motion.div>
     );
 };
 

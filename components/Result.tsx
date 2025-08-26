@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 
 // https://dictionary.cambridge.org/dictionary/english/
 function ResultRow({words_list}: {words_list: Array<String>})
@@ -8,12 +9,26 @@ function ResultRow({words_list}: {words_list: Array<String>})
     }
 
     return(
-        <div className=" text-lg min-md:text-2xl">{
-            words_list.map((word, index) =>
-                <span className=" px-2 hover:underline cursor-pointer inline-block" key={index} onClick={() => openInNewTab(word)}>{word}</span>
-            )
-        }
-        </div>
+        <motion.div
+            whileInView={{
+                transition: {
+                    type: "spring",
+                    bounce: 0.2,
+                    duration: 0.8,
+                },
+                opacity: 1, scale: 1,
+                x: 0
+            }}
+            viewport={{ once: true, amount: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8, x:50 }}
+        >
+            <div className=" text-lg min-md:text-2xl">{
+                words_list.map((word, index) =>
+                    <span className=" px-2 hover:underline cursor-pointer inline-block" key={index} onClick={() => openInNewTab(word)}>{word}</span>
+                )
+            }
+            </div>
+        </motion.div>
     )
 }
 

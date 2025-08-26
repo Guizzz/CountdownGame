@@ -6,6 +6,7 @@ import Button from "../components/ui/Button";
 import Cowntdown from "../components/Cowntdown";
 import Settings from "../components/ui/Settings";
 import { checkWords, getLetters } from "../server/server";
+import LeaderBoard from "../components/LeaderBoard";
 
 export default function Home() {
   

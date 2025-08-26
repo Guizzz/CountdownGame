@@ -14,7 +14,6 @@ export default function Settings({timer, setTimer, letters, setLetter} : {timer:
                         <button className={(timer==120? "font-bold": "text-secondary") + " mx-3"} onClick={() => setTimer(120)}> 120 </button>
                         <button className={(timer==90? "font-bold": "text-secondary") + " mx-3"} onClick={() => setTimer(90)}> 90  </button>
                         <button className={(timer==60? "font-bold": "text-secondary") + " mx-3"} onClick={() => setTimer(60)}> 60  </button>
-                        <button className={(timer==10? "font-bold": "text-secondary") + " mx-3"} onClick={() => setTimer(10)}> 10  </button>
                     </div>
                 </div>
                 <div className=" flex flex-row justify-between">
