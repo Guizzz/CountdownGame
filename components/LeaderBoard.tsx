@@ -5,44 +5,46 @@ import { AnimatePresence, motion } from "motion/react"
 import Button from "./ui/Button";
 import SecondaryButton from "./ui/SecondaryButton";
 
-function Player ({player}: {player:{name:string, points: number}})
-{
-    console.log(player);
-    const [points, setPoints] = useState(player.points)
-    return(
-        <div className=" flex flex-row justify-between">
-            <div className=" flex flex-col justify-center items-center">
-                {player.name} : {points}
-            </div>
-            <div className=" flex flex-row">
-                <div onClick={()=> setPoints(points + 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-green-200 hover:text-black ease-in-out duration-300">
-                    <button className=" font-bold mx-2 text-xl"> + </button>
-                </div>
-                <div onClick={()=> setPoints(points - 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-red-200 hover:text-black ease-in-out duration-300">
-                    <button className=" font-bold mx-2 text-xl"> - </button>
-                </div>
-            </div>
-        </div>
-    );
-}
 
-function PlayersSection({players_list}: {players_list:Array<{name:string, points: number}>}){
-    return(
-        <div className=" w-1/2">
-            {
-                players_list.map((p, index) =>
-                    <div className="py-2 " key={index}>
-                        <Player player={p}/>
-                    </div>
-                )
-            }
-        </div>
-    );
-}
 
 export default function LeaderBoard(){
     const [players, setPlayers] = useState(Array<{name:string, points: number}>)
     const [isVisible, setVisible] = useState(false)
+
+    function Player ({player}: {player:{name:string, points: number}})
+    {
+        console.log(player);
+        const [points, setPoints] = useState(player.points)
+        return(
+            <div className=" flex flex-row justify-between">
+                <div className=" flex flex-col justify-center items-center">
+                    {player.name} : {points}
+                </div>
+                <div className=" flex flex-row">
+                    <div onClick={()=> setPoints(points + 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-green-200 hover:text-black ease-in-out duration-300">
+                        <button className=" font-bold mx-2 text-xl"> + </button>
+                    </div>
+                    <div onClick={()=> setPoints(points - 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-red-200 hover:text-black ease-in-out duration-300">
+                        <button className=" font-bold mx-2 text-xl"> - </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    function PlayersSection({players_list}: {players_list:Array<{name:string, points: number}>}){
+        return(
+            <div className=" w-1/2">
+                {
+                    players_list.map((p, index) =>
+                        <div className="py-2 " key={index}>
+                            <Player player={p}/>
+                        </div>
+                    )
+                }
+            </div>
+        );
+    }
     
     function submit(e: React.SyntheticEvent) {
         e.preventDefault();
@@ -68,9 +70,17 @@ export default function LeaderBoard(){
     }
 
     return (
-        <div>
-            <div className=" absolute m-8 right-0 top-0">
-                <SecondaryButton active={true} f={open}> Leaderboard 🏆 </SecondaryButton>
+        <div className={isVisible?"absolute w-full h-full bg-black/50":""} onClick={()=>{ isVisible?close():"" }}>
+            <div className=" absolute m-8 right-1/12 bottom-1/3 ">
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => open()} 
+                    className=" cursor-pointer drop-shadow-xl flex flex-col justify-center items-center">
+                    <div className=" bg-button p-4 rounded-full z-10">
+                        <img src="cup.svg" className=" drop-shadow-md "  alt="" />
+                    </div>
+                </motion.button>
             </div>
             <AnimatePresence initial={false}>
                 {isVisible ? (
@@ -79,8 +89,9 @@ export default function LeaderBoard(){
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         key="box"
+                        className="m-auto p-2 left-0 right-0 top-1/6 absolute w-1/2 rounded-md backdrop-blur-sm bg-white/30 shadow-xl"
                     >
-                        <div className="m-auto left-0 right-0 absolute w-1/2 rounded-md backdrop-blur-sm bg-white/30 shadow-xl">
+                        <div >
                             <div className=" flex flex-col items-center justify-center m-4">
                                 <div className="text-2xl">
                                     Leader Board

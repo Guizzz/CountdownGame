@@ -1,4 +1,25 @@
+import { motion } from "motion/react";
+import Letter from "./Letter";
+
 export default function Settings({timer, setTimer, letters, setLetter} : {timer:number, setTimer: Function, letters:number, setLetter: Function}){
+
+    function Parameter({value, current, f} : { value:number, current:number, f:Function}){
+        return (
+            <>
+            <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => f(value)}
+                    transition= {{
+                        duration: 0.05,
+                    }}
+                    className={(current==value? "font-bold": "text-secondary") + " mx-3 cursor-pointer"}> 
+                {value} 
+            </motion.button>
+            </>
+        );
+    }
+
     return (
         <div className="w-full m-2 min-sm:mx-0 min-sm:w-4/5 min-md:w-2/3 h-20 my-5 flex items-center justify-center ">
             <div className=" w text-right m-7">
@@ -11,9 +32,9 @@ export default function Settings({timer, setTimer, letters, setLetter} : {timer:
                         Time
                     </div>
                     <div>
-                        <button className={(timer==120? "font-bold": "text-secondary") + " mx-3"} onClick={() => setTimer(120)}> 120 </button>
-                        <button className={(timer==90? "font-bold": "text-secondary") + " mx-3"} onClick={() => setTimer(90)}> 90  </button>
-                        <button className={(timer==60? "font-bold": "text-secondary") + " mx-3"} onClick={() => setTimer(60)}> 60  </button>
+                        <Parameter value={120} current={timer} f={setTimer}/>
+                        <Parameter value={90} current={timer} f={setTimer}/>
+                        <Parameter value={60} current={timer} f={setTimer}/>
                     </div>
                 </div>
                 <div className=" flex flex-row justify-between">
@@ -21,9 +42,9 @@ export default function Settings({timer, setTimer, letters, setLetter} : {timer:
                         Letters
                     </div>
                     <div>
-                        <button className={letters==12? "mx-3 font-bold": "mx-3 text-secondary"} onClick={() => setLetter(12)}> 12 </button>
-                        <button className={letters==10? "mx-3 font-bold": "mx-3 text-secondary"} onClick={() => setLetter(10)}> 10  </button>
-                        <button className={letters==9? "mx-3 font-bold": "mx-3 text-secondary"} onClick={() => setLetter(9)}> 9  </button>
+                        <Parameter value={12} current={letters} f={setLetter}/>
+                        <Parameter value={10} current={letters} f={setLetter}/>
+                        <Parameter value={9} current={letters} f={setLetter}/>
                     </div>
                 </div>
             </div>
