@@ -9,8 +9,7 @@ export default function SecondaryButton({active, f, children}: {active:Boolean, 
             whileTap={{ scale: 0.95 }}
             onClick={() => f()} 
             className=" cursor-pointer p-2 m-2 rounded-sm 
-                 hover:bg-gray-300 hover:text-black border-2 italic
-                 shadow-md"> 
+                    hover:bg-black/20  border-2 italic shadow-md"> 
                 {children} 
         </motion.button>
     );

@@ -12,19 +12,37 @@ export default function LeaderBoard(){
     const [isVisible, setVisible] = useState(false)
 
     function Player ({player}: {player:{name:string, points: number}})
-    {
+    {   
         console.log(player);
-        const [points, setPoints] = useState(player.points)
+        const [points, setP] = useState(player.points)
+
+        function setPoints(p:number)
+        {
+            setP(p);
+            var players_copy = players;
+            for(var pc of players_copy)
+            {
+                if(pc.name != player.name)
+                    continue;
+                
+                pc.points++;
+                setPlayers(players_copy);
+                return;
+            }
+
+        }
+
+        
         return(
             <div className=" flex flex-row justify-between">
                 <div className=" flex flex-col justify-center items-center">
                     {player.name} : {points}
                 </div>
                 <div className=" flex flex-row">
-                    <div onClick={()=> setPoints(points + 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-green-200 hover:text-black ease-in-out duration-300">
+                    <div onClick={()=> setPoints( points + 1)} className=" cursor-pointer m-2 rounded-sm hover:bg-green-200 hover:text-black ease-in-out duration-200">
                         <button className=" font-bold mx-2 text-xl"> + </button>
                     </div>
-                    <div onClick={()=> setPoints(points - 1 )} className=" cursor-pointer border-2 m-2 rounded-sm hover:bg-red-200 hover:text-black ease-in-out duration-300">
+                    <div onClick={()=> setPoints(points - 1 )} className=" cursor-pointer m-2 rounded-sm hover:bg-red-200 hover:text-black ease-in-out duration-200">
                         <button className=" font-bold mx-2 text-xl"> - </button>
                     </div>
                 </div>
@@ -70,7 +88,8 @@ export default function LeaderBoard(){
     }
 
     return (
-        <div className={isVisible?"absolute w-full h-full bg-black/50":""} onClick={()=>{ isVisible?close():"" }}>
+        <div>
+            <div className={isVisible?"absolute w-full h-full bg-black/50":""} onClick={()=>{ isVisible?close():"" }}/>
             <div className=" absolute m-8 right-1/12 bottom-1/3 ">
                 <motion.button
                     whileHover={{ scale: 1.1 }}
@@ -100,7 +119,7 @@ export default function LeaderBoard(){
                                 <PlayersSection players_list={players} />
                                 <div>
                                     <form onSubmit={submit}>
-                                        <input type="text" name="name" placeholder="Player" className=" bg-gray-500 p-2 rounded-sm"/>
+                                        <input type="text" name="name" placeholder="Player" className=" bg-black/20 p-2 rounded-sm"/>
                                         <SecondaryButton active={true} f={()=>{}}>
                                             <input type="submit" value="Add Player"/>
                                         </SecondaryButton>
