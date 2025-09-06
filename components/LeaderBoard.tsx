@@ -5,11 +5,11 @@ import { AnimatePresence, motion } from "motion/react"
 import Button from "./ui/Button";
 import SecondaryButton from "./ui/SecondaryButton";
 
-
-
 export default function LeaderBoard(){
     const [players, setPlayers] = useState(Array<{name:string, points: number}>)
     const [isVisible, setVisible] = useState(false)
+
+    const [showInfo, setInfo] = useState(true)
 
     function Player ({player}: {player:{name:string, points: number}})
     {   
@@ -29,9 +29,7 @@ export default function LeaderBoard(){
                 setPlayers(players_copy);
                 return;
             }
-
         }
-
         
         return(
             <div className=" flex flex-row justify-between">
@@ -80,6 +78,7 @@ export default function LeaderBoard(){
     function open()
     {
         setVisible(true)
+        setInfo(false)
     }
 
     function close()
@@ -89,8 +88,16 @@ export default function LeaderBoard(){
 
     return (
         <div>
-            <div className={isVisible?"absolute w-full h-full bg-black/50":""} onClick={()=>{ isVisible?close():"" }}/>
-            <div className=" absolute m-8 right-1/12 bottom-1/3 ">
+            <div className={isVisible?"absolute w-full h-full bg-black/50 z-10":""} onClick={()=>{ isVisible?close():"" }}/>
+            <div className=" absolute right-10 bottom-10 flex flex-row items-center">
+                <div className={showInfo?"flex flex-row items-center":"hidden"}>
+                    <div className="text-4xl font-story_script">
+                        Try the LeaderBoard!
+                    </div>
+                    <div className=" m-5">
+                        <img src="arrow.svg" alt="" className=" w-25 relative origin-center -top-2"/>
+                    </div>
+                </div>
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -108,7 +115,7 @@ export default function LeaderBoard(){
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         key="box"
-                        className="m-auto p-2 left-0 right-0 top-1/6 absolute w-1/2 rounded-md backdrop-blur-sm bg-white/30 shadow-xl"
+                        className="z-20 m-auto p-2 left-0 right-0 top-1/6 absolute w-1/2 rounded-md backdrop-blur-sm bg-white/30 shadow-xl"
                     >
                         <div >
                             <div className=" flex flex-col items-center justify-center m-4">
