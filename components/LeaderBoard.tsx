@@ -50,7 +50,7 @@ export default function LeaderBoard(){
 
     function PlayersSection({players_list}: {players_list:Array<{name:string, points: number}>}){
         return(
-            <div className=" w-1/2">
+            <div className=" min-md:w-1/2">
                 {
                     players_list.map((p, index) =>
                         <div className="py-2 " key={index}>
@@ -87,15 +87,15 @@ export default function LeaderBoard(){
     }
 
     return (
-        <div>
+        <div >
             <div className={isVisible?"absolute w-full h-full bg-black/50 z-10":""} onClick={()=>{ isVisible?close():"" }}/>
-            <div className=" absolute right-10 bottom-10 flex flex-row items-center">
+            <div className=" absolute right-5 bottom-5 flex flex-row items-center ">
                 <div className={showInfo?"flex flex-row items-center":"hidden"}>
-                    <div className="text-4xl font-story_script">
+                    <div className=" text-xl min-md:text-2xl min-lg:text-4xl font-story_script">
                         Try the LeaderBoard!
                     </div>
                     <div className=" m-5">
-                        <img src="arrow.svg" alt="" className=" w-25 relative origin-center -top-2"/>
+                        <img src="arrow.svg" alt="" className=" w-20 min-lg:w-25 relative origin-center -top-2"/>
                     </div>
                 </div>
                 <motion.button
@@ -104,18 +104,18 @@ export default function LeaderBoard(){
                     onClick={() => open()} 
                     className=" cursor-pointer drop-shadow-xl flex flex-col justify-center items-center">
                     <div className=" bg-button p-4 rounded-full z-10">
-                        <img src="cup.svg" className=" drop-shadow-md "  alt="" />
+                        <img src="cup.svg" className=" drop-shadow-md w-8 min-md:w-10 min-lg:w-20"  alt="" />
                     </div>
                 </motion.button>
             </div>
-            <AnimatePresence initial={false}>
+            <AnimatePresence initial={false} >
                 {isVisible ? (
                     <motion.div
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         key="box"
-                        className="z-20 m-auto p-2 left-0 right-0 top-1/6 absolute w-1/2 rounded-md backdrop-blur-sm bg-white/30 shadow-xl"
+                        className="z-20 m-10 min-md:m-auto p-2 left-0 right-0 top-1/6 absolute min-md:w-2/3 min-lg:w-1/2 rounded-md backdrop-blur-sm bg-white/30 shadow-xl"
                     >
                         <div >
                             <div className=" flex flex-col items-center justify-center m-4">
@@ -126,7 +126,7 @@ export default function LeaderBoard(){
                                 <PlayersSection players_list={players} />
                                 <div>
                                     <form onSubmit={submit}>
-                                        <input type="text" name="name" placeholder="Player" className=" bg-black/20 p-2 rounded-sm"/>
+                                        <input type="text" name="name" placeholder="Player" className=" bg-black/20 p-2 rounded-sm w-1/2"/>
                                         <SecondaryButton active={true} f={()=>{}}>
                                             <input type="submit" value="Add Player"/>
                                         </SecondaryButton>
