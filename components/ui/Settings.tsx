@@ -34,7 +34,7 @@ export default function Settings({timer, setTimer, letters, setLetter} : {timer:
                     <div>
                         <Parameter value={120} current={timer} f={setTimer}/>
                         <Parameter value={90} current={timer} f={setTimer}/>
-                        <Parameter value={3} current={timer} f={setTimer}/>
+                        <Parameter value={60} current={timer} f={setTimer}/>
                     </div>
                 </div>
                 <div className=" flex flex-row justify-between">
