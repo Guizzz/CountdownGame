@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
 // https://dictionary.cambridge.org/dictionary/english/
-function ResultRow({words_list}: {words_list: Array<String>})
+function ResultRow({words_list}: {words_list: Array<any>})
 {   
     function openInNewTab(word:String) {
         const newWindow = window.open( "https://dictionary.cambridge.org/dictionary/english/" + word , '_blank', 'noopener,noreferrer')
@@ -32,7 +32,7 @@ function ResultRow({words_list}: {words_list: Array<String>})
     )
 }
 
-export default function Result({ words, display }: {words:Array<{len:number, words:Array<String>}>, display: boolean}) {
+export default function Result({ words, display }: {words:Array<{len:number, words:Array<any>}>, display: boolean}) {
 
     if (words == null || words.length == 0 || !display)
         return;
