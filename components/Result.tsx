@@ -1,10 +1,14 @@
 import { motion } from "motion/react";
+import Tooltip from "./ui/Tooltip";
 
 // https://dictionary.cambridge.org/dictionary/english/
 function ResultRow({words_list}: {words_list: Array<any>})
 {   
-    function openInNewTab(word:String) {
-        const newWindow = window.open( "https://dictionary.cambridge.org/dictionary/english/" + word , '_blank', 'noopener,noreferrer')
+    function openInNewTab(word:any) {
+        var w = Object.keys(word)[0];
+        console.log("Clicked word:", w);
+        console.log("meaning:", word[Object.keys(word)[0]]["MEANINGS"]["1"][1]);
+        const newWindow = window.open( "https://dictionary.cambridge.org/dictionary/english/" + w , '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
     }
 
@@ -24,7 +28,11 @@ function ResultRow({words_list}: {words_list: Array<any>})
         >
             <div className=" text-lg min-md:text-2xl">{
                 words_list.map((word, index) =>
-                    <span className=" px-2 hover:underline cursor-pointer inline-block" key={index} onClick={() => openInNewTab(word)}>{word}</span>
+                    <span className=" px-2 hover:underline cursor-pointer inline-block" key={index} onClick={() => openInNewTab(word)}> 
+                        <Tooltip text={word[Object.keys(word)[0]]["MEANINGS"]["1"]}>
+                            {Object.keys(word)[0]}
+                        </Tooltip>
+                    </span>
                 )
             }
             </div>
