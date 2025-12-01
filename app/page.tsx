@@ -40,7 +40,7 @@ export default function Home() {
     setletters(letter_list);
     setPlayState(true);
     
-    var outputDict:Array<{len:number, words:Array<String>}> = await checkWords(letter_list);
+    var outputDict:Array<{len:number, words:Array<any>}> = await checkWords(letter_list);
     console.log(outputDict)
     setResWords(outputDict)
 
