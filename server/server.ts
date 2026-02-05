@@ -7,6 +7,10 @@ interface WordDetails {
   SYNONYMS: string[];
 }
 
+interface WordReport {
+  [key: string]: number
+}
+
 interface WordsDict {
   [key: number]: { [word: string]: WordDetails };
 }
@@ -70,4 +74,23 @@ export async function checkWords(letter_list: Array<String>){
   console.log(outputDict);
   return outputDict;
   
+}
+
+export async function reportWord(word: String) {
+  var filePath = '/assets/reported_words.json';
+  const file_report = await fs.readFile(process.cwd() + filePath, 'utf8');
+
+  const wordsDict: WordReport = JSON.parse(file_report);
+  if (wordsDict[word.toString()]) {
+    wordsDict[word.toString()]++;
+  } else {
+    wordsDict[word.toString()] = 1;
+  }
+
+  // Riscrivi il file
+  await fs.writeFile(
+    process.cwd() + filePath,
+    JSON.stringify(wordsDict, null, 2),
+    'utf8'
+  );
 }
