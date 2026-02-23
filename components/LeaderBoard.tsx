@@ -88,8 +88,8 @@ export default function LeaderBoard(){
 
     return (
         <div >
-            <div className={isVisible?" fixed w-full h-full bg-black/50 z-10":""} onClick={()=>{ isVisible?close():"" }}/>
-            <div className=" fixed right-5 bottom-5 flex flex-row items-center ">
+            <div className={isVisible?" fixed w-full h-full bg-black/50 z-20":""} onClick={()=>{ isVisible?close():"" }}/>
+            <div className=" fixed right-5 bottom-5 flex flex-row items-center z-20">
                 <div className={showInfo?"flex flex-row items-center":"hidden"}>
                     <div className=" text-xl min-md:text-2xl min-lg:text-4xl font-story_script">
                         Try the LeaderBoard!
