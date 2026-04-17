@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CountdownGame
 
-## Getting Started
+CountdownGame is a simple educational word game designed to improve English vocabulary and quick thinking skills.  
+It can be played individually or in groups and was originally created during English lessons as a fun classroom activity.
 
-First, run the development server:
+Players must think quickly and find valid English words under time pressure before the countdown reaches zero.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎮 Game Description
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The game challenges players to come up with English words within a limited time.  
+Depending on the mode, the objective changes, but the time pressure remains the key element.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🕹️ Game Modes
 
-To learn more about Next.js, take a look at the following resources:
+### 🔤 1. Word Collection Mode
+Players try to find as many valid English words as possible within the time limit.  
+The goal is to maximize the number of correct words before time runs out.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 📏 2. Longest Word Mode
+Players compete to find the **longest valid English word** they can think of before the countdown ends.  
+This was the original classroom mode and often played in groups.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 👥 Multiplayer / Classroom Use
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The game can be played:
+- **Individually**, to train vocabulary and speed
+- **In groups**, as a competitive classroom activity
+
+It works well as an educational tool to make learning English more engaging and interactive.
+
+---
+
+## 🧠 Educational Purpose
+
+CountdownGame was designed to:
+- Improve English vocabulary
+- Encourage fast recall of words
+- Promote friendly competition
+- Support classroom learning through gamification
+
+---
