@@ -5,6 +5,10 @@ It can be played individually or in groups and was originally created during Eng
 
 Players must think quickly and find valid English words under time pressure before the countdown reaches zero.
 
+![game](assets/imgs/game.png)
+
+---
+![game](assets/imgs/result.png)
 ---
 
 ## 🎮 Game Description
